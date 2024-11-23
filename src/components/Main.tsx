@@ -1,5 +1,7 @@
 "use client"
+
 import Modal from './Modais/Modal';
+import { motion } from "framer-motion";
 import Table from './Table';
 import { useState } from 'react';
 
@@ -27,9 +29,9 @@ export default function Main(){
                         <Table/>
                         </div>
                     <div className='max-w-fit ml-auto mr-auto mt-20 z-50'>
-                        <button 
+                        <button
                         onClick={()=>handleOpenModal()}
-                        className='rounded-lg px-2 py-4 bg-zinc-700 text-white'>
+                        className='rounded-lg px-2 py-4 bg-zinc-700 text-white hover:bg-zinc-500'>
                             Adicionar
                         </button>
                     </div>
