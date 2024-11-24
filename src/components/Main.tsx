@@ -22,7 +22,7 @@ export default function Main(){
              <div className='font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500'>
             <div>
                 <main>
-                    <div>
+                    <div className='flex justify-center items-center'>
                         <h1 className='text-3xl'>Segue a tabela com os imovéis capitados:</h1>
                     </div>
                     <div>

@@ -49,7 +49,7 @@ export default function Form() {
         <div className="flex justify-center items-center">
           <input
           value={nomeManda}
-          className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border border-zinc-500 focus:border-zinc-600"
+          className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
             placeholder="Nome"
             onChange={(evento) => setNome(evento.target.value)}
             onSubmit={handleSubmit}
@@ -60,10 +60,10 @@ export default function Form() {
 
         <div className="flex justify-center items-center">
           <input
-          value={bairroManda}
-          className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border border-zinc-500 focus:border-zinc-600"
-            placeholder="Bairro"
-           onChange={(evento) => setBairro(evento.target.value)}
+          value={localManda}
+          className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
+            placeholder="Local"
+            onChange={(evento) => setLocal(evento.target.value)}
             onSubmit={handleSubmit}
           />
         </div>
@@ -71,10 +71,10 @@ export default function Form() {
 
         <div className="flex justify-center items-center">
           <input
-          value={localManda}
-          className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border border-zinc-500 focus:border-zinc-600"
-            placeholder="Local"
-            onChange={(evento) => setLocal(evento.target.value)}
+          value={bairroManda}
+          className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
+            placeholder="Bairro"
+           onChange={(evento) => setBairro(evento.target.value)}
             onSubmit={handleSubmit}
           />
         </div>

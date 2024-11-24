@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Planilha",
+  title: "Planilha for Gabriel",
   description: "Planilha feita por mim para ajudar minha mãe",
 };
 
