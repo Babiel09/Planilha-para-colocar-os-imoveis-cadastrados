@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 
 interface ModalNomeProps {
   isCloe: () => void;
-  isOpen: () => void;
   Id: string;
 }
 
-export default function ModalNome({ isCloe, isOpen, Id }: ModalNomeProps) {
+export default function ModalNome({ isCloe, Id }: ModalNomeProps) {
   return (
     <div className="bg-opacity-25 inset-0 z-50 backdrop-blur-sm text-white fixed flex justify-center items-center bg-white">
       {/*Botão de fechamento */}

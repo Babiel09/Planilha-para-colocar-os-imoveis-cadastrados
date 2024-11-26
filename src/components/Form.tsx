@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PlanProps from "../utils/plan";
+import PlanProps, { ClanEnum } from "../utils/plan";
 import { motion } from "framer-motion";
 
 
@@ -7,13 +7,16 @@ export default function Form() {
   const [nomeManda, setNome] = useState<string | undefined>(undefined);
   const [bairroManda, setBairro] = useState<string | undefined>(undefined);
   const [localManda, setLocal] = useState<string | undefined>(undefined);
+  const [contatoManda, setContato] = useState<string | undefined>(undefined);
+  const [numeroManda, setNumero] = useState<number | undefined>(undefined);
+  const [tipoManda, setTipo] = useState<ClanEnum | undefined>(undefined);
   const [plan, setPlan] = useState<PlanProps[] | undefined>(undefined);
 
-  const handleSubmit = (evento: React.FormEvent) => {
-    const fetchPost = async ()=> {
+  const handleSubmit = async (evento: React.FormEvent) => {
+   
       try{
 
-        const post = await fetch("http://localhost:8000/plan", {
+      await fetch("http://localhost:8000/plan", {
           method:'POST',
           headers: {
             "Content-Type": "application/json",
@@ -21,7 +24,11 @@ export default function Form() {
           body:JSON.stringify({
             nome:nomeManda,
             bairro:bairroManda,
-            local:localManda
+            local:localManda,
+            contato:contatoManda,
+            numero:numeroManda,
+            tipo:tipoManda
+
           }),
         });
 
@@ -30,14 +37,7 @@ export default function Form() {
         throw new Error;
 
       };
-    };
-    fetchPost();
   };
-
-
-  const placeholder = ["Digite o Nome do imovel"];
-  const placeholder2 = ["Digite o Bairro do imovel"];
-  const placeholder3 = ["Digite onde o imovel foi encontrado"];
 
   return (
       <form className="text-white" onSubmit={handleSubmit}>
@@ -52,8 +52,39 @@ export default function Form() {
           className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
             placeholder="Nome"
             onChange={(evento) => setNome(evento.target.value)}
-            onSubmit={handleSubmit}
           />
+        </div>
+        <br />
+        <div className="flex justify-center items-center">
+          <input
+          value={contatoManda}
+          className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
+            placeholder="Contato"
+            onChange={(evento) => setContato(evento.target.value)}
+          />
+        </div>
+        <br />
+        <div className="flex justify-center items-center">
+          <input
+          type="number"
+          value={numeroManda}
+          className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
+            placeholder="Número"
+            onChange={evento=>setNumero(Number(evento.target.value))}
+          />
+        </div>
+        <br />
+        <div className="flex justify-center items-center">
+             <select 
+             name="tipo" 
+             id="tipo" 
+             value={tipoManda}  
+             onChange={evento=>setTipo(evento.target.value as ClanEnum)}
+             className="min-w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600">
+              <option value="starter">Escolha um valor</option>
+              <option value="Casa">Casa</option>
+              <option value="Apartamento">Apartamento</option>
+             </select>
         </div>
 
         <br />
@@ -64,7 +95,6 @@ export default function Form() {
           className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
             placeholder="Local"
             onChange={(evento) => setLocal(evento.target.value)}
-            onSubmit={handleSubmit}
           />
         </div>
         <br />
@@ -75,7 +105,6 @@ export default function Form() {
           className="w-full text-xl rounded-full px-4 py-2 bg-zinc-800 text-white focus:bg-zinc-900 border-2 border-zinc-300 focus:border-zinc-600"
             placeholder="Bairro"
            onChange={(evento) => setBairro(evento.target.value)}
-            onSubmit={handleSubmit}
           />
         </div>
           </motion.div>

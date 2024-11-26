@@ -7,8 +7,8 @@ interface FormLocal{
 export default function FormLocal({id}:FormLocal){
     const [newLocal, setNewLocal] = useState<string>("");
     const handleSubmit = async () => {
-         await fetch(`http://localhost:8000/plan/${id}`, {
-            method:"PUT",
+         await fetch(`http://localhost:8000/plan/${id}/local`, {
+            method:"PATCH",
             headers:{"Content-Type": "application/json"},
             body:JSON.stringify({
                 local:newLocal
